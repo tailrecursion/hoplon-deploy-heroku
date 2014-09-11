@@ -10,7 +10,13 @@
   [tailrecursion/boot.notify "2.0.2"]
   [tailrecursion/boot.ring "0.2.1"]]
  :source-paths
- ["src" "resources"]
+ ["src"
+  ".boot/tmp/68174/_COLON_tailrecursion.hoplon.boot_SLASH_hoplon_src_inc_css/dir.tmp"
+  ".boot/tmp/68174/_COLON_tailrecursion.hoplon.boot_SLASH_hoplon_src/dir.tmp"
+  ".boot/tmp/68174/_COLON_tailrecursion.hoplon.boot_SLASH_public_out/dir.tmp"
+  ".boot/tmp/68174/_COLON_tailrecursion.hoplon.boot_SLASH_cljs_out/dir.tmp"
+  ".boot/tmp/68174/_COLON_tailrecursion.boot.task_SLASH_cljs_stage/dir.tmp"
+  "resources"]
  :min-lein-version "2.0.0"
  :uberjar-name
  "hoplon-deploy-heroku-standalone.jar"
