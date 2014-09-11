@@ -11,8 +11,7 @@
   [tailrecursion/boot.ring "0.2.1"]]
  :source-paths
  ["src" "resources"]
- :min-lein-version
- "2.0.0"
+ :min-lein-version "2.0.0"
  :plugins
  [[lein-environ "1.0.0"]]
  :hooks
