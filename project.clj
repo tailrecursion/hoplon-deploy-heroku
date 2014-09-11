@@ -14,8 +14,6 @@
  :min-lein-version "2.0.0"
  :plugins
  [[lein-environ "1.0.0"]]
- :hooks
- [environ.leiningen.hooks]
  :uberjar-name
  "hoplon-deploy-heroku-standalone.jar"
  :profiles
