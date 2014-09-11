@@ -1,4 +1,4 @@
-# Hoplon Uberwar Example
+# Deploy Hoplon Application to Heroku
 
 An example project that uses Hoplon and Castra, with tasks to help you package
 it up and deploy to Heroku.
