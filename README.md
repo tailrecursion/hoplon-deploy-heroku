@@ -1,26 +1,27 @@
 # Hoplon Uberwar Example
 
 An example project that uses Hoplon and Castra, with tasks to help you package
-it up as an uberwar file or work locally during development.
+it up and deploy to Heroku.
 
 ## Usage
 
-Build uberwar for production:
+- Build the hoplon html etc. and prepare deployment descriptors for Heroku:
 
-```
-$ boot uberwar
-```
+  ```
+  $ boot production heroku
+  ```
+
+- Commit changes and push to Heroku:
+
+  ```
+  $ git commit -a -m "working" && git push heroku master
+  ```
 
 Build for development with local Jetty server:
 
 ```
 $ boot development
 ```
-
-Then open [http://localhost:8000](http://localhost:8000) in your browser. Your
-backend RPC namespaces will be reloaded automatically whenever they are modified.
-Live reload can be enabled in the client, as well, by uncommenting a line in the
-`index.cljs.hl` file. Have fun!
 
 ## License
 
