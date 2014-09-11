@@ -12,9 +12,9 @@
  :source-paths
  ["src" "resources"]
  :min-lein-version "2.0.0"
- :plugins
- [[lein-environ "1.0.0"]]
  :uberjar-name
  "hoplon-deploy-heroku-standalone.jar"
+ :plugins
+ [[lein-environ "1.0.0"]]
  :profiles
  {:production {:env {:production true}}})
