@@ -13,7 +13,7 @@
   (->
     (castra 'hello-world.api)
     (wrap-session {:store (cookie-store {:key "a 16-byte secret"})})
-    (wrap-resource "public")    
+    (wrap-resource "public")
     (wrap-file-info)))
 
 (defn -main [& [port]]
