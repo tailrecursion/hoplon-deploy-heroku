@@ -4,15 +4,17 @@
  :dependencies
  [[org.clojure/clojure "1.6.0"]
   [tailrecursion/boot.core "2.5.0" :exclusions [[org.clojure/clojure]]]
+  [environ "1.0.0"]
   [tailrecursion/hoplon "5.10.14"]
   [tailrecursion/boot.task "2.2.1"]
   [tailrecursion/boot.notify "2.0.2"]
   [tailrecursion/boot.ring "0.2.1"]]
  :source-paths
  ["src" "resources"]
- :min-lein-version "2.0.0"
+ :min-lein-version
+ "2.0.0"
  :plugins
- [[environ/environ.lein "0.2.1"]]
+ [[lein-environ "1.0.0"]]
  :hooks
  [environ.leiningen.hooks]
  :uberjar-name

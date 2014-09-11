@@ -5,7 +5,8 @@
 (set-env!
   :project      'hoplon-deploy-heroku
   :version      "0.1.0-SNAPSHOT"
-  :dependencies '[[tailrecursion/hoplon      "5.10.14"]
+  :dependencies '[[environ                   "1.0.0"]
+                  [tailrecursion/hoplon      "5.10.14"]
                   [tailrecursion/boot.task   "2.2.1"]
                   [tailrecursion/boot.notify "2.0.2"]
                   [tailrecursion/boot.ring   "0.2.1"]]
@@ -25,7 +26,7 @@
   (set-env!
     :src-paths #{"resources"}
     :lein      '{:min-lein-version "2.0.0"
-                 :plugins          [[environ/environ.lein "0.2.1"]]
+                 :plugins          [[lein-environ "1.0.0"]]
                  :hooks            [environ.leiningen.hooks]
                  :uberjar-name     "hoplon-deploy-heroku-standalone.jar"
                  :profiles         {:production {:env {:production true}}}})
@@ -34,7 +35,6 @@
 (deftask development
   "Start local dev server."
   []
-  (set-env! :dependencies '[[environ "1.0.0"]])
   (comp
     (castra-dev-server 'hello-world.api)
     (watch)
