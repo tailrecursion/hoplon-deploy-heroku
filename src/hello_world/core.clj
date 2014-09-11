@@ -9,12 +9,19 @@
    [ring.middleware.file-info      :refer [wrap-file-info]]
    [tailrecursion.castra.handler   :refer [castra]]))
 
+(defn wrap-dir-index [handler]
+  (fn [req]
+    (handler
+     (update-in req [:uri]
+                #(if (= "/" %) "/index.html" %)))))
+
 (def app
   (->
     (castra 'hello-world.api)
     (wrap-session {:store (cookie-store {:key "a 16-byte secret"})})
-    (wrap-resource "public")    
-    (wrap-file-info)))
+    (wrap-resource "public")
+    (wrap-file-info)
+    (wrap-dir-index)))
 
 (defn -main [& [port]]
   (let [port (Integer. (or port (env :port) 5000))]
