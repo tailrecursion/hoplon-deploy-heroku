@@ -2,10 +2,7 @@
 /lib
 /classes
 /checkouts
-/resources/public/*
-/out
 /bootstrap
-/project.clj
 pom.xml
 *.swn
 *.swo
@@ -20,5 +17,4 @@ hs_err_*
 .lein-repl-history
 .DS_Store
 .boot
-/boot
-/test/test.js
+.lein-*

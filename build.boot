@@ -24,7 +24,7 @@
   []
   (set-env!
     :src-paths #{"resources"}
-    :lein      '{:plugins      [[environ/environ.lein "1.0.0"]]
+    :lein      '{:plugins      [[environ/environ.lein "0.2.1"]]
                  :hooks        [environ.leiningen.hooks]
                  :uberjar-name "hoplon-deploy-heroku-standalone.jar"
                  :profiles     {:production {:env {:production true}}}})
