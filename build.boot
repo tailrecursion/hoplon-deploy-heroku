@@ -3,16 +3,14 @@
 #tailrecursion.boot.core/version "2.5.0"
 
 (set-env!
-  :project      'hoplon-deploy-heroku
-  :version      "0.1.0-SNAPSHOT"
-  :main-class   'hello-world.core
   :dependencies '[[environ                   "1.0.0"]
                   [tailrecursion/hoplon      "5.10.14"]
                   [tailrecursion/boot.task   "2.2.1"]
                   [tailrecursion/boot.notify "2.0.2"]
                   [tailrecursion/boot.ring   "0.2.1"]]
+  :src-paths    #{"src"}
   :out-path     "resources/public"
-  :src-paths    #{"src"})
+  :main-class   'hello-world.core)
 
 ;; Static resources synced to output dir
 (add-sync! (get-env :out-path) #{"resources/assets"})
@@ -24,9 +22,10 @@
 (deftask heroku
   "Prepare project.clj and Procfile for Heroku deployment."
   [& [main-class]]
-  (let [jar-name   (format "%s-standalone.jar" (get-env :project))
+  (let [jar-name   "hoplon-app-standalone.jar"
         jar-path   (format "target/%s" jar-name)
         main-class (or main-class (get-env :main-class))]
+    (assert main-class "missing :main-class entry in env")
     (set-env!
       :src-paths #{"resources"}
       :lein      {:min-lein-version "2.0.0"
@@ -36,9 +35,11 @@
     (comp
       (lein-generate)
       (with-pre-wrap
+        (println "Writing project.clj...")
         (-> "project.clj" slurp
           (.replaceAll "(:min-lein-version)\\s+(\"[0-9.]+\")" "$1 $2")
           ((partial spit "project.clj")))
+        (println "Writing Procfile...")
         (-> "web: java $JVM_OPTS -cp %s clojure.main -m %s"
           (format jar-path main-class)
           ((partial spit "Procfile")))))))
