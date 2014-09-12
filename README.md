@@ -4,7 +4,19 @@ An example project that uses Hoplon and Castra, with tasks to help you package
 it up and deploy to Heroku. If you aren't familiar with how Heroku works you
 may want to [check out their Getting Started docs][1].
 
-## Usage
+## Start Local Dev Server
+
+- When you're working on your app you can start a local server that will serve
+  your app at http://localhost:8000 and recompile source files as necessary:
+
+  ```
+  $ boot development
+  ```
+
+- When you have everything working the way you want it, you're ready to
+  compile with optimizations and deploy to Heroku. That's the next section.
+
+## Deploy to Heroku
 
 - Set up for heroku (only need to do this once):
 
@@ -30,12 +42,6 @@ may want to [check out their Getting Started docs][1].
   ```
   $ heroku logs --tail
   ```
-
-Build for development with local Jetty server:
-
-```
-$ boot development
-```
 
 [1]: https://devcenter.heroku.com/articles/getting-started-with-clojure
 
