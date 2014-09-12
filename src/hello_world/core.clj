@@ -12,8 +12,8 @@
 (defn wrap-dir-index [handler]
   (fn [req]
     (handler
-      (update-in req [:uri]
-        #(if (= "/" %) "/index.html" %)))))
+     (update-in req [:uri]
+                #(if (= "/" %) "/index.html" %)))))
 
 (def app
   (->
