@@ -1,7 +1,6 @@
 (ns hello-world.core
   (:gen-class)
   (:require
-   [environ.core                   :refer [env]]
    [ring.adapter.jetty             :refer [run-jetty]]
    [ring.middleware.resource       :refer [wrap-resource]]
    [ring.middleware.session        :refer [wrap-session]]
@@ -24,7 +23,7 @@
     (wrap-file-info)))
 
 (defn -main [& [port]]
-  (let [port (Integer. (or port (env :port) 5000))]
+  (let [port (Integer. (or port 8000))]
     (run-jetty #'app {:port port :join? false})))
 
 ;; For interactive development:

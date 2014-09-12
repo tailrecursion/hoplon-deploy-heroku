@@ -1,1 +1,1 @@
-web: java $JVM_OPTS -cp target/hoplon-app-standalone.jar clojure.main -m hello-world.core
+web: java $JVM_OPTS -cp target/hoplon-app-standalone.jar clojure.main -m hello-world.core $PORT

@@ -1,11 +1,10 @@
 #!/usr/bin/env boot
 
-#tailrecursion.boot.core/version "2.5.0"
+#tailrecursion.boot.core/version "2.5.1"
 
 (set-env!
-  :dependencies '[[environ                   "1.0.0"]
-                  [tailrecursion/hoplon      "5.10.14"]
-                  [tailrecursion/boot.task   "2.2.1"]
+  :dependencies '[[tailrecursion/hoplon      "5.10.23"]
+                  [tailrecursion/boot.task   "2.2.4"]
                   [tailrecursion/boot.notify "2.0.2"]
                   [tailrecursion/boot.ring   "0.2.1"]]
   :src-paths    #{"src"}
@@ -17,6 +16,7 @@
 
 (require
   '[tailrecursion.hoplon.boot :refer :all]
+  '[tailrecursion.boot.task.notify :refer [hear]]
   '[tailrecursion.castra.task :refer [castra-dev-server]])
 
 (deftask heroku
@@ -28,10 +28,7 @@
     (assert main-class "missing :main-class entry in env")
     (set-env!
       :src-paths #{"resources"}
-      :lein      {:min-lein-version "2.0.0"
-                  :uberjar-name     jar-name
-                  :plugins          '[[lein-environ "1.0.0"]]
-                  :profiles         {:production {:env {:production true}}}})
+      :lein      {:min-lein-version "2.0.0" :uberjar-name jar-name})
     (comp
       (lein-generate)
       (with-pre-wrap
@@ -50,6 +47,7 @@
   (comp
     (castra-dev-server 'hello-world.api)
     (watch)
+    (hear)
     (hoplon {:prerender false})))
 
 (deftask production
